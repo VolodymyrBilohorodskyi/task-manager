@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 80rem;
+  padding: 3.125rem 0.625rem;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100%;
+}
+.wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  border: 0.0625rem solid #f1f1f1;
+  border-radius: 0.625rem;
+  box-shadow: 0.0625rem 0.0625rem 0.625rem #cccccc;
+}

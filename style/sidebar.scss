@@ -1,0 +1,93 @@
+.sidebar {
+  background: #f4f6f8;
+  border-right: 0.0625rem solid #f1f1f1;
+  width: 18.75rem;
+  &__content {
+    padding: 3.125rem 1.5625rem;
+  }
+  &__main {
+    margin-bottom: 1.5625rem;
+    li {
+      display: flex;
+      gap: 0.625rem;
+      font-size: 1.25rem;
+      align-items: center;
+      padding: 0.9375rem 0.75rem;
+      cursor: pointer;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+    li {
+      display: flex;
+      align-items: center;
+      padding: 0.625rem 0.75rem;
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        .sidebar__listRemove {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+  &__listTitle {
+    flex: 1 1 auto;
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+  &__listColor {
+    display: block;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-right: 10px;
+    background-color: red;
+    border-radius: 50%;
+  }
+  &__listRemove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.875rem;
+    height: 1.875rem;
+    opacity: 0;
+    visibility: hidden;
+    border: 1px solid transparent;
+    border-radius: 0.3125rem;
+    transition: all 0.3 ease;
+    svg {
+      width: 1rem;
+      height: 1rem;
+      path {
+        fill: rgb(255, 0, 0);
+      }
+    }
+    &:hover {
+      svg {
+        path {
+          fill: rgba(255, 0, 0, 0.6);
+        }
+      }
+    }
+  }
+  &__add-btn {
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: #767676;
+    padding: 0.625rem 0.75rem;
+    &:hover {
+      color: #545454;
+      svg {
+        path {
+          stroke: #545454;
+        }
+      }
+    }
+    svg {
+      margin-right: 0.625rem;
+    }
+  }
+}
