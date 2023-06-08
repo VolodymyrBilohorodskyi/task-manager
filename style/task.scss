@@ -1,0 +1,108 @@
+.task {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 4.0625rem 3.125rem 3.125rem 3.125rem;
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.125rem;
+    margin-bottom: 1.25rem;
+    svg {
+      cursor: pointer;
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    &:hover {
+      svg {
+        path {
+          fill: #545454;
+        }
+      }
+    }
+  }
+
+  &__separate {
+    height: 2px;
+    background-color: #f2f2f2;
+    margin-bottom: 1.875rem;
+  }
+  &__cheked {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.875rem;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  &__add-btn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #b4b4b4;
+    font-size: 1.25rem;
+    svg {
+      cursor: pointer;
+      width: 1.25rem;
+      height: 1.25rem;
+      path {
+        stroke: #b4b4b4;
+      }
+    }
+    &:hover {
+      color: #545454;
+      svg {
+        path {
+          stroke: #545454;
+        }
+      }
+    }
+  }
+  &__completed {
+    text-decoration: line-through;
+    color: #b4b4b4;
+  }
+  &__add-block {
+  }
+
+  &__add-field {
+    background-color: transparent;
+    border: 1px solid #efefef;
+    width: 50%;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.625rem;
+    margin-bottom: 1.25rem;
+    &::placeholder {
+      color: #c7c7c7;
+    }
+  }
+  &__add-action {
+    display: flex;
+    gap: 1.25rem;
+    button {
+      padding: 0.625rem;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  &__add {
+    background-color: #4dd599;
+    color: #fff;
+  }
+  &__cancel {
+    background-color: #f4f6f8;
+    color: #9c9c9c;
+  }
+}

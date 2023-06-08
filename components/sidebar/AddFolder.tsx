@@ -1,30 +1,53 @@
-const AddFolder = () => {
+'use client'
+import { useState } from 'react'
+import { ClosePopupIcon } from '../icons/Icons'
+
+type ActiveAdd = {
+  handleActiveAdd: () => void
+}
+
+const AddFolderFetch = async (nameFolder: string) => {
+  await fetch('/api/folder', {
+    method: 'POST',
+    body: JSON.stringify(nameFolder),
+  })
+}
+
+const AddFolder: React.FC<ActiveAdd> = ({ handleActiveAdd }) => {
+  const [folderName, setFolderName] = useState('')
+
+  const handleSendName = () => {
+    AddFolderFetch(folderName)
+  }
+
   return (
-    <button className='sidebar__add-btn'>
-      <svg
-        width='12'
-        height='12'
-        viewBox='0 0 12 12'
-        fill='none'
-        xmlns='http://www.w3.org/2000/svg'
-      >
-        <path
-          d='M6 1V11'
-          stroke='#868686'
-          strokeWidth='1.5'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-        />
-        <path
-          d='M1 6H11'
-          stroke='#868686'
-          strokeWidth='1.5'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-        />
-      </svg>
-      Add fodler
-    </button>
+    <div className='sidebar__popup-add'>
+      <div className='sidebar__popup-close' onClick={handleActiveAdd}>
+        <ClosePopupIcon />
+      </div>
+      <input
+        type='text'
+        placeholder='Folder name'
+        className='sidebar__folder-title'
+        value={folderName}
+        onChange={(e) => setFolderName(e.target.value)}
+      />
+      <div className='sidebar__color-block'>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <button className='sidebar__add-btn' onClick={handleSendName}>
+        Add Folder
+      </button>
+    </div>
   )
 }
+
 export default AddFolder

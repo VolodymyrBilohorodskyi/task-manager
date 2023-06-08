@@ -1,3 +1,4 @@
+import Tasks from '@/components/tasks/Tasks'
 import Sidebar from '@/components/sidebar/Sidebar'
 
 export default function Home() {
@@ -5,7 +6,7 @@ export default function Home() {
     <div className='container'>
       <div className='wrapper'>
         <Sidebar />
-        <main className='main'>MAIN</main>
+        <Tasks />
       </div>
     </div>
   )
