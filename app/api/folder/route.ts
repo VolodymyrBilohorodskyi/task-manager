@@ -1,24 +1,40 @@
+import connectDB from '@/lib/mongodb'
+import Category from '@/models/category'
 import { NextResponse } from 'next/server'
+import mongoose from 'mongoose'
 
-export const POST = async (request: Request) => {
-  const nameFolder = await request.json()
+export const POST = async (req: Request) => {
+  const data = await req.json()
 
-  const data = {
-    title: nameFolder,
-    label: nameFolder.replace(/\s/g, '').toLowerCase(),
-    color: '#ff0000',
+  try {
+    await connectDB()
+    await Category.create(data)
+
+    return NextResponse.json({
+      msg: ['Message sent successfully'],
+      success: true,
+    })
+  } catch (error) {
+    if (error instanceof mongoose.Error.ValidationError) {
+      let errorList = []
+      for (let e in error.errors) {
+        errorList.push(error.errors[e].message)
+      }
+      console.log(errorList)
+      return NextResponse.json({ msg: errorList })
+    } else {
+      return NextResponse.json({ msg: ['Unable to send message.'] })
+    }
   }
-
-  const res = await fetch('http://localhost:3333/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  })
-  return NextResponse.json({ res })
 }
 
 export const GET = async () => {
-  const res = await fetch('http://localhost:3333/')
-  const data = await res.json()
-  return NextResponse.json({ data })
+  try {
+    await connectDB()
+    const response = await Category.find()
+    return NextResponse.json(response)
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json({ msg: ['ERROR'] })
+  }
 }

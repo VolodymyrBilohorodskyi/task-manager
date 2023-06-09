@@ -27,19 +27,19 @@
       position: relative;
       cursor: pointer;
       &:hover {
-        .sidebar__listRemove {
+        .sidebar__list-remove {
           opacity: 1;
           visibility: visible;
         }
       }
     }
   }
-  &__listTitle {
+  &__list-title {
     flex: 1 1 auto;
     font-size: 1rem;
     line-height: 1.25rem;
   }
-  &__listColor {
+  &__list-color {
     display: block;
     width: 0.75rem;
     height: 0.75rem;
@@ -47,7 +47,7 @@
     background-color: red;
     border-radius: 50%;
   }
-  &__listRemove {
+  &__list-remove {
     display: flex;
     align-items: center;
     justify-content: center;

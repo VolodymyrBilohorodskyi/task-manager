@@ -1,25 +1,17 @@
-'use client'
-import { useState, useEffect } from 'react'
 import AddFolder from './AddFolder'
 import TaskItem from './TaskItem'
-import { AddFolderIcon, AllTaskIcon } from '../icons/Icons'
+import { AllTaskIcon } from '../icons/Icons'
+import { GetFolderFetch } from '@/services/addfolder'
+import useSWR from 'swr'
 
-const Sidebar = () => {
-  const [isActive, setActive] = useState(false)
-  const [folder, setFolder] = useState<any>(null)
+const fetcher = async (url: string) => {
+  const response = await fetch(url)
+  const data = await response.json()
+  return data
+}
 
-  useEffect(() => {
-    const folders = async () => {
-      const response = await fetch('/api/folder')
-      const { data } = await response.json()
-      setFolder(data)
-    }
-    folders()
-  }, [])
-
-  const handleActiveAdd = () => {
-    setActive(!isActive)
-  }
+const Sidebar = async () => {
+  const data = await GetFolderFetch()
 
   return (
     <aside className='sidebar'>
@@ -31,18 +23,12 @@ const Sidebar = () => {
           </li>
         </ul>
         <ul className='sidebar__list'>
-          {folder &&
-            folder.map((item: any) => {
-              return <TaskItem {...item} key={item.title} />
+          {data &&
+            data.map((item: any) => {
+              return <TaskItem key={item.title} {...item} />
             })}
         </ul>
-        <div className='sidebar__addfolder'>
-          <button className='sidebar__add-folder' onClick={handleActiveAdd}>
-            <AddFolderIcon />
-            Add fodler
-          </button>
-        </div>
-        {isActive && <AddFolder handleActiveAdd={handleActiveAdd} />}
+        <AddFolder />
       </div>
     </aside>
   )
