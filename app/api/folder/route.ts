@@ -1,7 +1,6 @@
 import connectDB from '@/lib/mongodb'
 import Category from '@/models/category'
 import { NextResponse } from 'next/server'
-import mongoose from 'mongoose'
 
 export const POST = async (req: Request) => {
   const data = await req.json()
@@ -15,16 +14,8 @@ export const POST = async (req: Request) => {
       success: true,
     })
   } catch (error) {
-    if (error instanceof mongoose.Error.ValidationError) {
-      let errorList = []
-      for (let e in error.errors) {
-        errorList.push(error.errors[e].message)
-      }
-      console.log(errorList)
-      return NextResponse.json({ msg: errorList })
-    } else {
-      return NextResponse.json({ msg: ['Unable to send message.'] })
-    }
+    console.log(error)
+    return NextResponse.json({ msg: error })
   }
 }
 
