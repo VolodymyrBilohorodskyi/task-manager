@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { AddFolderIcon } from '../icons/Icons'
 
-const TaskNew = () => {
+const TaskNew: React.FC = () => {
   const [addTask, setAddTask] = useState(false)
 
   const handleAddTask = () => {

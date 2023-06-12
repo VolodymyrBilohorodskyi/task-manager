@@ -1,8 +1,8 @@
-export const addFolderFetch = async (folderName: string) => {
+export const addFolderFetch = async (folderData: { title: string; color: string }) => {
   const data = {
-    title: folderName,
-    label: folderName.replace(/\s/g, '').toLowerCase(),
-    color: '#ff0000',
+    title: folderData.title,
+    label: folderData.title.replace(/\s/g, '').toLowerCase(),
+    color: folderData.color,
   }
   await fetch('/api/folder', {
     method: 'POST',

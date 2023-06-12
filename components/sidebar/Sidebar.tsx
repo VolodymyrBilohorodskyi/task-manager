@@ -2,10 +2,17 @@ import AddFolder from './AddFolder'
 import FolderItem from './FolderItem'
 import { AllTaskIcon } from '../icons/Icons'
 import { AddFolderType } from '@/types'
+import randomColor from 'randomcolor'
 
-const Sidebar = ({ folders }: { folders: AddFolderType[] }) => {
-  console.log(folders)
+type FildersType = {
+  folders: AddFolderType[]
+}
 
+const Sidebar: React.FC<FildersType> = ({ folders }) => {
+  const colors = randomColor({
+    count: 10,
+    luminosity: 'dark',
+  })
   return (
     <aside className='sidebar'>
       <div className='sidebar__content'>
@@ -21,7 +28,7 @@ const Sidebar = ({ folders }: { folders: AddFolderType[] }) => {
               return <FolderItem key={item._id} {...item} />
             })}
         </ul>
-        <AddFolder />
+        <AddFolder colors={colors} />
       </div>
     </aside>
   )

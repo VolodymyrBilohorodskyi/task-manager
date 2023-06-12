@@ -3,11 +3,13 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { AddFolderIcon, ClosePopupIcon } from '../icons/Icons'
 import { addFolderFetch } from '@/services/FolderAPI'
+import ColorItem from './ColorItem'
 
-const AddFolder: React.FC = () => {
+const AddFolder: React.FC<{ colors: string[] }> = ({ colors }) => {
   const router = useRouter()
   const [isActive, setActive] = useState(false)
   const [folderName, setFolderName] = useState('')
+  const [folderColor, setFolderColor] = useState('')
 
   const handleOpenFolder = () => {
     setActive(!isActive)
@@ -15,7 +17,8 @@ const AddFolder: React.FC = () => {
 
   const handleAddFolder = async () => {
     if (folderName.length > 2) {
-      await addFolderFetch(folderName)
+      const data = { title: folderName, color: folderColor }
+      await addFolderFetch(data)
       setActive(!isActive)
       setFolderName('')
       router.refresh()
@@ -50,7 +53,16 @@ const AddFolder: React.FC = () => {
             }}
           />
           <div className='sidebar__color-block'>
-            <div></div>
+            {colors.map((color, index) => {
+              return (
+                <ColorItem
+                  key={index}
+                  color={color}
+                  setFolderColor={setFolderColor}
+                  count={index + 1}
+                />
+              )
+            })}
           </div>
           <button className='sidebar__add-btn' onClick={handleAddFolder}>
             Add Folder

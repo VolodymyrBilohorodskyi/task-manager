@@ -2,7 +2,7 @@ import { TitleEditIcon } from '../icons/Icons'
 import TaskItem from './TaskItem'
 import TaskNew from './TaskNew'
 
-const Tasks = () => {
+const Tasks: React.FC = () => {
   return (
     <main className='task'>
       <div className='task__title'>

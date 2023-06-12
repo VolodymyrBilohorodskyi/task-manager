@@ -3,7 +3,7 @@ import Sidebar from '@/components/sidebar/Sidebar'
 import { AddFolderType } from '@/types'
 import { GetFolderFetch } from '@/services/FolderAPI'
 
-export default async function Home() {
+const Home = async () => {
   const folderData: AddFolderType[] = await GetFolderFetch()
 
   return (
@@ -15,3 +15,4 @@ export default async function Home() {
     </div>
   )
 }
+export default Home

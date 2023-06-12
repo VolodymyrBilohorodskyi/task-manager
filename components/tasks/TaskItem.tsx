@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { TaskCheckedIcon, TaskUnCheckedIcon } from '../icons/Icons'
 
-const TaskItem = () => {
+const TaskItem: React.FC = () => {
   const [isChecked, setChecked] = useState(false)
   const handleCheckChange = () => {
     setChecked(!isChecked)
