@@ -1,11 +1,10 @@
 import AddFolder from './AddFolder'
 import FolderItem from './FolderItem'
 import { AllTaskIcon } from '../icons/Icons'
-import { GetFolderFetch } from '@/services/FolderAPI'
 import { AddFolderType } from '@/types'
 
-const Sidebar = async () => {
-  const data: AddFolderType[] = await GetFolderFetch()
+const Sidebar = ({ folders }: { folders: AddFolderType[] }) => {
+  console.log(folders)
 
   return (
     <aside className='sidebar'>
@@ -17,8 +16,8 @@ const Sidebar = async () => {
           </li>
         </ul>
         <ul className='sidebar__list'>
-          {data &&
-            data.map((item: AddFolderType, index) => {
+          {folders &&
+            folders.map((item: AddFolderType) => {
               return <FolderItem key={item._id} {...item} />
             })}
         </ul>
