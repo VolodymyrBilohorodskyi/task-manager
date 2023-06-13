@@ -16,7 +16,7 @@ const AddFolder: React.FC<{ colors: string[] }> = ({ colors }) => {
   }
 
   const handleAddFolder = async () => {
-    if (folderName.length > 2) {
+    if (folderName.length > 2 && folderColor !== '') {
       const data = { title: folderName, color: folderColor }
       await addFolderFetch(data)
       setActive(!isActive)
