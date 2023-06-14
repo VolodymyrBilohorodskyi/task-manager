@@ -1,24 +1,34 @@
-import { useState } from 'react'
+import { useState, useEffect } from "react";
 
-type ColorItem = {
-  color: string
-  setFolderColor: (str: string) => void
-  count: number
-}
-const ColorItem: React.FC<ColorItem> = ({ color, setFolderColor, count }) => {
-  const [isSelected, setSelected] = useState(false)
+type ColorItemProps = {
+  color: string;
+  setFolderColor: (color: string) => void;
+  selectedColor: string;
+};
+
+const ColorItem: React.FC<ColorItemProps> = ({
+  color,
+  setFolderColor,
+  selectedColor,
+}) => {
+  const [isSelected, setSelected] = useState(false);
 
   const handleSetFolderColor = (color: string) => {
-    setSelected((current) => !current)
-    setFolderColor(color)
-  }
+    setSelected(true);
+    setFolderColor(color);
+  };
+
+  useEffect(() => {
+    setSelected(selectedColor === color);
+  }, [selectedColor, color]);
 
   return (
     <div
-      style={{ background: `${color}` }}
-      className={isSelected ? 'selected' : ''}
+      style={{ background: color }}
+      className={isSelected ? "sidebar__color-item active" : ""}
       onClick={() => handleSetFolderColor(color)}
-    ></div>
-  )
-}
-export default ColorItem
+    />
+  );
+};
+
+export default ColorItem;

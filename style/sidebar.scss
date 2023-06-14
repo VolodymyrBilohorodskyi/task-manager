@@ -2,11 +2,14 @@
   background: #f4f6f8;
   border-right: 0.0625rem solid #f1f1f1;
   flex: 1 1 35%;
+
   &__content {
     padding: 3.125rem 1.5625rem;
   }
+
   &__main {
     margin-bottom: 1.5625rem;
+
     li {
       display: flex;
       gap: 0.625rem;
@@ -16,16 +19,19 @@
       cursor: pointer;
     }
   }
+
   &__list {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.25rem;
+
     li {
       display: flex;
       align-items: center;
       padding: 0.625rem 0.75rem;
       position: relative;
       cursor: pointer;
+
       &:hover {
         .sidebar__list-remove {
           opacity: 1;
@@ -34,11 +40,13 @@
       }
     }
   }
+
   &__list-title {
     flex: 1 1 auto;
     font-size: 1rem;
     line-height: 1.25rem;
   }
+
   &__list-color {
     display: block;
     width: 0.75rem;
@@ -46,6 +54,7 @@
     margin-right: 10px;
     border-radius: 50%;
   }
+
   &__list-remove {
     display: flex;
     align-items: center;
@@ -57,11 +66,13 @@
     border: 1px solid transparent;
     border-radius: 0.3125rem;
     transition: all 0.3 ease;
+
     svg {
       width: 1rem;
       height: 1rem;
       fill: #f4f6f8;
     }
+
     &:hover {
       svg {
         path {
@@ -70,23 +81,28 @@
       }
     }
   }
+
   &__add-folder {
     cursor: pointer;
     font-size: 1.25rem;
     color: #b4b4b4;
     padding: 0.625rem 0.75rem;
+
     &:hover {
       color: #545454;
+
       svg {
         path {
           stroke: #545454;
         }
       }
     }
+
     svg {
       margin-right: 0.625rem;
     }
   }
+
   &__popup-add {
     display: flex;
     flex-direction: column;
@@ -107,6 +123,7 @@
     top: -0.625rem;
     right: -0.625rem;
     cursor: pointer;
+
     &:hover {
       svg {
         path {
@@ -121,6 +138,7 @@
     border: 1px solid #efefef;
     border-radius: 0.25rem;
     padding: 0.5rem 0 0.5rem 0.625rem;
+
     &::placeholder {
       color: #c7c7c7;
     }
@@ -130,13 +148,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    & > div {
+
+    &>div {
       display: block;
       width: 1.125rem;
       height: 1.125rem;
       border-radius: 50%;
       cursor: pointer;
       border: 1px solid transparent;
+
       &.selected {
         border-color: #000;
       }
@@ -149,10 +169,15 @@
     color: #fff;
     border: 1px solid transparent;
     border-radius: 0.25rem;
+
     &:hover {
       border-color: #4dd599;
       background-color: transparent;
       color: #000;
     }
   }
+}
+
+.sidebar__color-item.active {
+  border: 2px solid #fff;
 }

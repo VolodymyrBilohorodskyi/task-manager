@@ -13,6 +13,7 @@ const AddFolder: React.FC<{ colors: string[] }> = ({ colors }) => {
 
   const handleOpenFolder = () => {
     setActive(!isActive)
+    setFolderColor('')
   }
 
   const handleAddFolder = async () => {
@@ -59,7 +60,7 @@ const AddFolder: React.FC<{ colors: string[] }> = ({ colors }) => {
                   key={index}
                   color={color}
                   setFolderColor={setFolderColor}
-                  count={index + 1}
+                  selectedColor={folderColor}
                 />
               )
             })}

@@ -12,7 +12,7 @@ const FolderItem: React.FC<AddFolderType> = ({ title, _id, color }) => {
   }
   return (
     <li>
-      <span className='sidebar__list-color' style={{ backgroundColor: `${color}` }}></span>
+      <span className='sidebar__list-color' style={{ backgroundColor: color }}></span>
       <span className='sidebar__list-title'>{title}</span>
       <button className='sidebar__list-remove' onClick={() => handleRemoveFolder()}>
         <FolderRemoveIcon />
