@@ -105,4 +105,18 @@
     background-color: #f4f6f8;
     color: #9c9c9c;
   }
+  &__name {
+    flex: 1 1 auto;
+  }
+  &__remove {
+    align-self: flex-end;
+    &:hover {
+      cursor: pointer;
+      svg {
+        path {
+          fill: #545454;
+        }
+      }
+    }
+  }
 }

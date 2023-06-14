@@ -1,19 +1,7 @@
-import Tasks from "@/components/tasks/Tasks"
-import Sidebar from "@/components/sidebar/Sidebar"
-import { AddFolderType } from "@/types"
-import { GetFolderFetch } from "@/services/FolderAPI"
+import Tasks from '@/components/tasks/Tasks'
 
-const Home = async () => {
-  const folderData: AddFolderType[] = await GetFolderFetch()
-
-  return (
-    <div className="container">
-      <div className="wrapper">
-        <Sidebar folders={folderData} />
-        <Tasks />
-      </div>
-    </div>
-  )
+const Home = () => {
+  return <Tasks />
 }
 
 export default Home

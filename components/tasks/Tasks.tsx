@@ -1,25 +1,22 @@
+import { taskType } from '@/types'
 import { TitleEditIcon } from '../icons/Icons'
 import TaskItem from './TaskItem'
 import TaskNew from './TaskNew'
 
-const Tasks: React.FC = () => {
+type TaskProps = {
+  label: string
+  tasks: taskType[]
+}
+const Tasks: React.FC<TaskProps> = ({ label, tasks }) => {
   return (
     <main className='task'>
-      <div className='task__title'>
-        <h3>Task Title</h3>
-        <TitleEditIcon />
-      </div>
-      <div className='task__separate'></div>
       <div className='task__list'>
-        <TaskItem />
-        <TaskItem />
-        <TaskItem />
-        <TaskItem />
-        <TaskItem />
-        <TaskItem />
-        <TaskItem />
+        {tasks &&
+          tasks.map((item: taskType) => {
+            return <TaskItem key={item._id} {...item} />
+          })}
       </div>
-      <TaskNew />
+      {label && <TaskNew label={label} />}
     </main>
   )
 }

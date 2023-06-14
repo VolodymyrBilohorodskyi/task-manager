@@ -3,7 +3,6 @@ import Category from '@/models/category'
 import { NextResponse } from 'next/server'
 
 export const DELETE = async (req: Request, { params }: { params: { id: string } }) => {
-  console.log('DeleteFolderFetch')
   const id = params.id
   try {
     await connectDB()
