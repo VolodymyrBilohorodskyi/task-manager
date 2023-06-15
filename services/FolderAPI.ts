@@ -13,8 +13,15 @@ export const addFolderFetch = async (folderData: { title: string; color: string 
   })
 }
 
-export const GetFolderFetch = async () => {
+export const GetAllFolderFetch = async () => {
   const response = await fetch('http://localhost:3000/api/folder', { next: { revalidate: 0 } })
+  return await response.json()
+}
+
+export const GetFolderFetch = async (folderLabel: string) => {
+  const response = await fetch(`http://localhost:3000/api/folder/${folderLabel}`, {
+    next: { revalidate: 0 },
+  })
   return await response.json()
 }
 

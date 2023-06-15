@@ -26,6 +26,11 @@ export const getTaskFetch = async (label: string) => {
   return await response.json()
 }
 
+export const GetAllTaskFetch = async () => {
+  const response = await fetch('http://localhost:3000/api/task', { next: { revalidate: 0 } })
+  return await response.json()
+}
+
 export const DeleteTaskFetch = async (taskId: string) => {
   const response = await fetch(`http://localhost:3000/api/task/${taskId}`, {
     method: 'DELETE',
@@ -33,6 +38,19 @@ export const DeleteTaskFetch = async (taskId: string) => {
   })
   if (response.ok) {
     console.log('Delete success')
+  } else {
+    console.log(response.text)
+  }
+}
+
+export const PatchTaskFetch = async (taskId: string, completed: boolean) => {
+  const response = await fetch(`http://localhost:3000/api/task/${taskId}`, {
+    method: 'PATCH',
+    next: { revalidate: 0 },
+    body: JSON.stringify({ completed }),
+  })
+  if (response.ok) {
+    console.log('PATCH success')
   } else {
     console.log(response.text)
   }

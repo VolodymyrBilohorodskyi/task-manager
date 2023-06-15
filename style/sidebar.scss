@@ -10,7 +10,7 @@
   &__main {
     margin-bottom: 1.5625rem;
 
-    li {
+    &-li {
       display: flex;
       gap: 0.625rem;
       font-size: 1.25rem;
@@ -24,8 +24,13 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 1.25rem;
-
-    li {
+    & > .active {
+      background: #fff;
+      border-color: #f1f1f1;
+      border-radius: 0.625rem;
+      box-shadow: 1px 1px 10px #cccccc;
+    }
+    &-item {
       display: flex;
       align-items: center;
       padding: 0.625rem 0.75rem;
@@ -149,7 +154,7 @@
     align-items: center;
     justify-content: space-between;
 
-    &>div {
+    & > div {
       display: block;
       width: 1.125rem;
       height: 1.125rem;

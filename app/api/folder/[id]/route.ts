@@ -13,3 +13,14 @@ export const DELETE = async (req: Request, { params }: { params: { id: string } 
     return NextResponse.json({ msg: ['ERROR'] })
   }
 }
+export const GET = async (req: Request, { params }: { params: { id: string } }) => {
+  const label = params.id
+  try {
+    await connectDB()
+    const response = await Category.findOne({ label: label })
+    return NextResponse.json(response)
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json({ msg: ['ERROR'] })
+  }
+}

@@ -25,3 +25,15 @@ export const DELETE = async (req: Request, { params }: { params: { slug: string 
     return NextResponse.json({ msg: ['ERROR'] })
   }
 }
+export const PATCH = async (req: Request, { params }: { params: { slug: string } }) => {
+  const { completed } = await req.json()
+  const id = params.slug
+  try {
+    await connectDB()
+    const response = await Task.updateOne({ _id: id }, { completed: completed })
+    return NextResponse.json(response)
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json({ msg: ['ERROR'] })
+  }
+}

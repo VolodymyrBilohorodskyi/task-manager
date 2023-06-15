@@ -19,13 +19,13 @@ export const POST = async (req: Request) => {
   }
 }
 
-// export const GET = async () => {
-//   try {
-//     await connectDB()
-//     const response = await Category.find()
-//     return NextResponse.json(response)
-//   } catch (error) {
-//     console.log(error)
-//     return NextResponse.json({ msg: ['ERROR'] })
-//   }
-// }
+export const GET = async () => {
+  try {
+    await connectDB()
+    const response = await Task.find()
+    return NextResponse.json(response)
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json({ msg: ['ERROR'] })
+  }
+}

@@ -1,5 +1,5 @@
 import Sidebar from '@/components/sidebar/Sidebar'
-import { GetFolderFetch } from '@/services/FolderAPI'
+import { GetAllFolderFetch } from '@/services/FolderAPI'
 import '@/style/globals.scss'
 import { AddFolderType } from '@/types'
 import { Roboto } from 'next/font/google'
@@ -11,7 +11,7 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const folderData: AddFolderType[] = await GetFolderFetch()
+  const folderData: AddFolderType[] = await GetAllFolderFetch()
   return (
     <html lang='en'>
       <body className={roboto.className}>

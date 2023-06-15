@@ -1,15 +1,21 @@
-import { taskType } from '@/types'
+import { AddFolderType, taskType } from '@/types'
 import { TitleEditIcon } from '../icons/Icons'
 import TaskItem from './TaskItem'
 import TaskNew from './TaskNew'
 
 type TaskProps = {
-  label: string
-  tasks: taskType[]
+  label?: string
+  tasks?: taskType[]
+  folder?: AddFolderType | undefined
 }
-const Tasks: React.FC<TaskProps> = ({ label, tasks }) => {
+const Tasks: React.FC<TaskProps> = ({ label, tasks, folder }) => {
   return (
     <main className='task'>
+      <div className='task__title'>
+        <h3 style={{ color: folder?.color }}>{folder?.title ? folder?.title : 'All Tasks'}</h3>
+        {folder?.title && <TitleEditIcon />}
+      </div>
+      <div className='task__separate' style={{ backgroundColor: folder?.color }}></div>
       <div className='task__list'>
         {tasks &&
           tasks.map((item: taskType) => {
