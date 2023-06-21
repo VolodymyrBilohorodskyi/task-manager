@@ -16,6 +16,7 @@ const TaskItem: React.FC<taskType> = ({ _id, title, completed }) => {
   const changeCompleted = () => {
     setCompleted(!isCompleted)
     PatchTaskFetch(_id, !isCompleted)
+    router.refresh()
   }
 
   return (

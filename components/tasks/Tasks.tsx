@@ -2,11 +2,12 @@ import { AddFolderType, taskType } from '@/types'
 import { TitleEditIcon } from '../icons/Icons'
 import TaskItem from './TaskItem'
 import TaskNew from './TaskNew'
+import { UpdateFolderNameFetch } from '@/services/FolderAPI'
 
 type TaskProps = {
   label?: string
   tasks?: taskType[]
-  folder?: AddFolderType | undefined
+  folder?: AddFolderType
 }
 const Tasks: React.FC<TaskProps> = ({ label, tasks, folder }) => {
   return (

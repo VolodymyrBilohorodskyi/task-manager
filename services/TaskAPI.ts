@@ -34,10 +34,23 @@ export const GetAllTaskFetch = async () => {
 export const DeleteTaskFetch = async (taskId: string) => {
   const response = await fetch(`http://localhost:3000/api/task/${taskId}`, {
     method: 'DELETE',
-    next: { revalidate: 0 },
+    cache: 'no-store',
   })
   if (response.ok) {
     console.log('Delete success')
+  } else {
+    console.log(response.text)
+  }
+}
+
+export const DeleteAllTaskFetch = async (label: string) => {
+  const response = await fetch(`http://localhost:3000/api/task/delete/${label}`, {
+    method: 'DELETE',
+    cache: 'no-store',
+  })
+  if (response.ok) {
+    console.log('Delete success ALL TASK')
+    return response.ok
   } else {
     console.log(response.text)
   }

@@ -29,3 +29,16 @@ export const GET = async () => {
     return NextResponse.json({ msg: ['ERROR'] })
   }
 }
+
+export const PATCH = async (req: Request) => {
+  const data = await req.json()
+  const id = data.id
+  try {
+    await connectDB()
+    const response = await Category.updateOne({ _id: id }, { data })
+    return NextResponse.json(response)
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json({ msg: ['ERROR'] })
+  }
+}

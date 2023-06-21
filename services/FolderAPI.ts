@@ -32,7 +32,23 @@ export const DeleteFolderFetch = async (folderId: string) => {
   })
   if (response.ok) {
     console.log('Delete success')
+    return response.ok
   } else {
     console.log(response.text)
   }
+}
+
+export const UpdateFolderNameFetch = async (folderData: { id: string; title: string }) => {
+  const data = {
+    _id: folderData.id,
+    title: folderData.title,
+    label: folderData.title.replace(/\s/g, '').toLowerCase(),
+  }
+  await fetch('/api/folder', {
+    method: 'PATCH',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
 }

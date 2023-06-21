@@ -4,13 +4,18 @@ import { usePathname, useRouter } from 'next/navigation'
 import { FolderRemoveIcon } from '../icons/Icons'
 import { DeleteFolderFetch } from '@/services/FolderAPI'
 import Link from 'next/link'
+import { DeleteAllTaskFetch } from '@/services/TaskAPI'
 
 const FolderItem: React.FC<AddFolderType> = ({ title, _id, color, label }) => {
   const router = useRouter()
   const pathname = usePathname()
   const handleRemoveFolder = async () => {
-    await DeleteFolderFetch(_id)
-    router.refresh()
+    const deleteFolder = await DeleteFolderFetch(_id)
+    const deleteAllTask = await DeleteAllTaskFetch(label)
+    if (deleteFolder && deleteAllTask) {
+      router.push('/')
+      router.refresh()
+    }
   }
 
   let isActive = false
